@@ -2,7 +2,7 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-BCDSevegments\BCDSevegments.c
+BCDSevenSegment\BCDSevegments.c
 
 Delay_Timer\delay_Timer.c
 

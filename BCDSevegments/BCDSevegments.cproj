@@ -124,7 +124,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BCDSevegments\BCDSevegments.c">
+    <Compile Include="BCDSevenSegment\BCDSevegments.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Delay_Timer\delay_Timer.c">
@@ -168,7 +168,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BCDSevegments" />
+    <Folder Include="BCDSevenSegment" />
     <Folder Include="Headers" />
     <Folder Include="DIO" />
     <Folder Include="Keypad" />

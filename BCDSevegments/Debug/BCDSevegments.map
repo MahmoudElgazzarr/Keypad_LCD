@@ -33,9 +33,9 @@ Discarded input sections
 
  .data          0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .bss           0x00000000        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .text          0x00000000        0x0 BCDSevegments/BCDSevegments.o
- .data          0x00000000        0x0 BCDSevegments/BCDSevegments.o
- .bss           0x00000000        0x0 BCDSevegments/BCDSevegments.o
+ .text          0x00000000        0x0 BCDSevenSegment/BCDSevegments.o
+ .data          0x00000000        0x0 BCDSevenSegment/BCDSevegments.o
+ .bss           0x00000000        0x0 BCDSevenSegment/BCDSevegments.o
  .text          0x00000000        0x0 Delay_Timer/delay_Timer.o
  .data          0x00000000        0x0 Delay_Timer/delay_Timer.o
  .bss           0x00000000        0x0 Delay_Timer/delay_Timer.o
@@ -133,7 +133,7 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
-LOAD BCDSevegments/BCDSevegments.o
+LOAD BCDSevenSegment/BCDSevegments.o
 LOAD Delay_Timer/delay_Timer.o
 LOAD DIO/DIO_Registers.o
 LOAD Keypad/Keypad.o
@@ -324,16 +324,16 @@ END GROUP
                 0x0000006c                . = ALIGN (0x2)
  *(.text.*)
  .text.BCDSevegments_Init
-                0x0000006c       0x70 BCDSevegments/BCDSevegments.o
+                0x0000006c       0x70 BCDSevenSegment/BCDSevegments.o
                 0x0000006c                BCDSevegments_Init
  .text.BCDSevegments_enable
-                0x000000dc       0x4e BCDSevegments/BCDSevegments.o
+                0x000000dc       0x4e BCDSevenSegment/BCDSevegments.o
                 0x000000dc                BCDSevegments_enable
  .text.BCDSevegments_disable
-                0x0000012a       0x4e BCDSevegments/BCDSevegments.o
+                0x0000012a       0x4e BCDSevenSegment/BCDSevegments.o
                 0x0000012a                BCDSevegments_disable
  .text.BCDSevegments_displayNo
-                0x00000178      0x1a4 BCDSevegments/BCDSevegments.o
+                0x00000178      0x1a4 BCDSevenSegment/BCDSevegments.o
                 0x00000178                BCDSevegments_displayNo
  .text.DIO_WritePin
                 0x0000031c      0x1e0 DIO/DIO_Registers.o
@@ -493,7 +493,7 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 BCDSevegments/BCDSevegments.o
+ .comment       0x00000000       0x30 BCDSevenSegment/BCDSevegments.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 DIO/DIO_Registers.o
  .comment       0x00000030       0x31 Keypad/Keypad.o
@@ -522,7 +522,7 @@ END GROUP
 .debug_aranges  0x00000000       0xb0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x38 BCDSevegments/BCDSevegments.o
+                0x00000000       0x38 BCDSevenSegment/BCDSevegments.o
  .debug_aranges
                 0x00000038       0x30 DIO/DIO_Registers.o
  .debug_aranges
@@ -536,7 +536,7 @@ END GROUP
 .debug_info     0x00000000     0x10a2
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6       0xeb BCDSevegments/BCDSevegments.o
+ .debug_info    0x000004e6       0xeb BCDSevenSegment/BCDSevegments.o
  .debug_info    0x000005d1      0x104 DIO/DIO_Registers.o
  .debug_info    0x000006d5       0x9c Keypad/Keypad.o
  .debug_info    0x00000771      0x931 main.o
@@ -544,41 +544,41 @@ END GROUP
 .debug_abbrev   0x00000000      0x6db
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x4a3 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_abbrev  0x000004a3       0x85 BCDSevegments/BCDSevegments.o
+ .debug_abbrev  0x000004a3       0x85 BCDSevenSegment/BCDSevegments.o
  .debug_abbrev  0x00000528       0x80 DIO/DIO_Registers.o
  .debug_abbrev  0x000005a8       0x6b Keypad/Keypad.o
  .debug_abbrev  0x00000613       0xc8 main.o
 
-.debug_line     0x00000000      0xf4c
+.debug_line     0x00000000      0xf4e
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x115 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000115      0x2b8 BCDSevegments/BCDSevegments.o
- .debug_line    0x000003cd      0x226 DIO/DIO_Registers.o
- .debug_line    0x000005f3      0x156 Keypad/Keypad.o
- .debug_line    0x00000749      0x803 main.o
+ .debug_line    0x00000115      0x2ba BCDSevenSegment/BCDSevegments.o
+ .debug_line    0x000003cf      0x226 DIO/DIO_Registers.o
+ .debug_line    0x000005f5      0x156 Keypad/Keypad.o
+ .debug_line    0x0000074b      0x803 main.o
 
 .debug_frame    0x00000000      0x19c
  *(.debug_frame)
- .debug_frame   0x00000000       0x94 BCDSevegments/BCDSevegments.o
+ .debug_frame   0x00000000       0x94 BCDSevenSegment/BCDSevegments.o
  .debug_frame   0x00000094       0x74 DIO/DIO_Registers.o
  .debug_frame   0x00000108       0x54 Keypad/Keypad.o
  .debug_frame   0x0000015c       0x40 main.o
 
-.debug_str      0x00000000      0x456
+.debug_str      0x00000000      0x458
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.209/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x1a4 BCDSevegments/BCDSevegments.o
-                                0x1cb (size before relaxing)
- .debug_str     0x0000033a       0x61 DIO/DIO_Registers.o
+ .debug_str     0x00000196      0x1a6 BCDSevenSegment/BCDSevegments.o
+                                0x1cd (size before relaxing)
+ .debug_str     0x0000033c       0x61 DIO/DIO_Registers.o
                                 0x1ac (size before relaxing)
- .debug_str     0x0000039b       0x42 Keypad/Keypad.o
+ .debug_str     0x0000039d       0x42 Keypad/Keypad.o
                                 0x180 (size before relaxing)
- .debug_str     0x000003dd       0x79 main.o
+ .debug_str     0x000003df       0x79 main.o
                                 0x1c4 (size before relaxing)
 
 .debug_loc      0x00000000      0x2d0
  *(.debug_loc)
- .debug_loc     0x00000000      0x113 BCDSevegments/BCDSevegments.o
+ .debug_loc     0x00000000      0x113 BCDSevenSegment/BCDSevegments.o
  .debug_loc     0x00000113       0xd8 DIO/DIO_Registers.o
  .debug_loc     0x000001eb       0x83 Keypad/Keypad.o
  .debug_loc     0x0000026e       0x62 main.o
@@ -603,7 +603,7 @@ END GROUP
 
 .debug_ranges   0x00000000       0x70
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x28 BCDSevegments/BCDSevegments.o
+ .debug_ranges  0x00000000       0x28 BCDSevenSegment/BCDSevegments.o
  .debug_ranges  0x00000028       0x20 DIO/DIO_Registers.o
  .debug_ranges  0x00000048       0x18 Keypad/Keypad.o
  .debug_ranges  0x00000060       0x10 main.o

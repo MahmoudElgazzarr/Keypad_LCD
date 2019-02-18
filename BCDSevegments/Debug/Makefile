@@ -33,7 +33,7 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../BCDSevegments \
+../BCDSevenSegment \
 ../Headers \
 ../DIO \
 ../Keypad \
@@ -42,7 +42,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../BCDSevegments/BCDSevegments.c \
+../BCDSevenSegment/BCDSevegments.c \
 ../Delay_Timer/delay_Timer.c \
 ../DIO/DIO_Registers.c \
 ../Keypad/Keypad.c \
@@ -56,28 +56,28 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-BCDSevegments/BCDSevegments.o \
+BCDSevenSegment/BCDSevegments.o \
 Delay_Timer/delay_Timer.o \
 DIO/DIO_Registers.o \
 Keypad/Keypad.o \
 main.o
 
 OBJS_AS_ARGS +=  \
-BCDSevegments/BCDSevegments.o \
+BCDSevenSegment/BCDSevegments.o \
 Delay_Timer/delay_Timer.o \
 DIO/DIO_Registers.o \
 Keypad/Keypad.o \
 main.o
 
 C_DEPS +=  \
-BCDSevegments/BCDSevegments.d \
+BCDSevenSegment/BCDSevegments.d \
 Delay_Timer/delay_Timer.d \
 DIO/DIO_Registers.d \
 Keypad/Keypad.d \
 main.d
 
 C_DEPS_AS_ARGS +=  \
-BCDSevegments/BCDSevegments.d \
+BCDSevenSegment/BCDSevegments.d \
 Delay_Timer/delay_Timer.d \
 DIO/DIO_Registers.d \
 Keypad/Keypad.d \
@@ -97,7 +97,7 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-BCDSevegments/BCDSevegments.o: ../BCDSevegments/BCDSevegments.c
+BCDSevenSegment/BCDSevegments.o: ../BCDSevenSegment/BCDSevegments.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\include" -I"../Headers" -I"../DIO" -I"../Delay_Timer" -I"../Keypad" -I"../BCDSevegments"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.209\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
