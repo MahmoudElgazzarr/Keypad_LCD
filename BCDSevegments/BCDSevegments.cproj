@@ -138,6 +138,15 @@
     <Compile Include="DIO_Registers.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keypad.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keypad_cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

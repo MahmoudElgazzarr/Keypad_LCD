@@ -12,7 +12,6 @@
 #ifndef KEYPAD_H_
 #define KEYPAD_H_
 
-
 void Keypad_init();
 uint8 Keypad_getPressedKey();
 
