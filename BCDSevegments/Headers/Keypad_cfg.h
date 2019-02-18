@@ -8,11 +8,14 @@
 
 #ifndef KEYPAD_CFG_H_
 #define KEYPAD_CFG_H_
-
+/*
 #define Numbers_of_Row 3
 #define Numbers_of_Column 3
 
 #define Keypad_Port PORTC
+
+*/
+
 //Rows OUTPUT
 #define Keypad_ROW1_PIN PIN18
 #define Keypad_ROW2_PIN PIN19

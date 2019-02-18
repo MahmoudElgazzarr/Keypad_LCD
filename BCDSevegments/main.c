@@ -28,6 +28,7 @@ int main(void)
 			BCDSevegments_disable(ONE);
 			BCDSevegments_disable(THREE);
 			BCDSevegments_disable(FOUR);
+			//display one
 			BCDSevegments_displayNo(ONE);
 			_delay_ms(50);
 		}

@@ -2,13 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-BCDSevegments.c
+BCDSevegments\BCDSevegments.c
 
-delay_Timer.c
+Delay_Timer\delay_Timer.c
 
-DIO_Registers.c
+DIO\DIO_Registers.c
 
-Keypad.c
+Keypad\Keypad.c
 
 main.c
 
