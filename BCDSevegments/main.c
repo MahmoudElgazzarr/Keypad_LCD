@@ -11,13 +11,17 @@
 #include "BCDSevegments.h"
 #include "Keypad.h"
 #include "avr/delay.h"
-
+#include "LCD.h"
+#include "LCD_Cfg.h"
 
 int main(void)
 {
     /* Replace with your application code */
 	BCDSevegments_Init();
 	Keypad_init();
+	LCD_init();
+	_delay_ms(5);
+	
     while (1) 
     {
 		uint8 key = Keypad_getPressedKey();

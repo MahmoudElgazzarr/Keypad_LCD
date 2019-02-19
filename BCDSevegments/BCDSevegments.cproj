@@ -103,6 +103,7 @@
       <Value>../Delay_Timer</Value>
       <Value>../Keypad</Value>
       <Value>../BCDSevegments</Value>
+      <Value>../LCD</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
@@ -157,10 +158,19 @@
     <Compile Include="Headers\Keypad_cfg.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Headers\LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Headers\LCD_Cfg.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Headers\Types.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Keypad\Keypad.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LCD\LCD.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
@@ -173,6 +183,7 @@
     <Folder Include="DIO" />
     <Folder Include="Keypad" />
     <Folder Include="Delay_Timer" />
+    <Folder Include="LCD" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
