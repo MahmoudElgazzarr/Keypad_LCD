@@ -13,7 +13,7 @@
 
 void LCD_init()
 {
-	#ifdef Bit_Mode4
+	//#ifdef Bit_Mode4
 	
 	/*Data PINS*/
 	DIO_SetPinDirection(LCD_D4 , OUTPUT);
@@ -37,7 +37,7 @@ void LCD_init()
 	LCD_sendCommand(0x06);
 	
 	
-	#endif
+	//#endif
 	/*
 	#if Bit_Mode8
 	
@@ -102,9 +102,6 @@ void LCD_displayChar(uint8 ch)
 	/*R/W == 0 For Writing */
 	DIO_WritePin(LCD_RW , LOW);
 	
-	/*Clear Display*/
-	LCD_sendCommand(Clear_Command);
-	
 	/*LCD Enable Pin LOW For Latching*/
 	DIO_WritePin(LCD_ENABLE,LOW);
 	
@@ -133,9 +130,15 @@ void LCD_displayChar(uint8 ch)
 	_delay_us(100);
 	
 }
-void LCD_displayString()
+void LCD_displayString(uint8 str[])
 {
-	
+	uint8 i;
+	uint8 str_len = ((sizeof(str))/(sizeof(str[0])));
+	for(i=0;i<8;i++)
+	{
+		LCD_displayChar(str[i]);
+		_delay_ms(2);
+	}
 }
 
 void LCD_displayStringRowColumn()
