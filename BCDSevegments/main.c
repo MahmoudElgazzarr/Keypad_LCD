@@ -24,10 +24,10 @@ int main(void)
 		if (key == 1)
 		{
 			_delay_ms(50);
+			BCDSevegments_enable(ONE);
 			BCDSevegments_enable(TWO);
-			BCDSevegments_disable(ONE);
-			BCDSevegments_disable(THREE);
-			BCDSevegments_disable(FOUR);
+			BCDSevegments_enable(THREE);
+			BCDSevegments_enable(FOUR);
 			//display one
 			BCDSevegments_displayNo(ONE);
 			_delay_ms(50);
@@ -35,80 +35,80 @@ int main(void)
 		if(key == 2)
 		{
 			_delay_ms(50);
-			BCDSevegments_enable(TWO);
-			BCDSevegments_disable(ONE);
-			BCDSevegments_disable(THREE);
-			BCDSevegments_disable(FOUR);
-			BCDSevegments_displayNo(TWO);
+		BCDSevegments_enable(ONE);
+		BCDSevegments_enable(TWO);
+		BCDSevegments_enable(THREE);
+		BCDSevegments_enable(FOUR);
+		BCDSevegments_displayNo(TWO);
 			_delay_ms(50);
 		}
 		if(key == 3)
 		{
 			_delay_ms(50);
+			BCDSevegments_enable(ONE);
 			BCDSevegments_enable(TWO);
-			BCDSevegments_disable(ONE);
-			BCDSevegments_disable(THREE);
-			BCDSevegments_disable(FOUR);
+			BCDSevegments_enable(THREE);
+			BCDSevegments_enable(FOUR);
 			BCDSevegments_displayNo(THREE);
 			_delay_ms(50);
 		}
 		if(key == 4)
 		{
 		_delay_ms(50);
+		BCDSevegments_enable(ONE);
 		BCDSevegments_enable(TWO);
-		BCDSevegments_disable(ONE);
-		BCDSevegments_disable(THREE);
-		BCDSevegments_disable(FOUR);
+		BCDSevegments_enable(THREE);
+		BCDSevegments_enable(FOUR);
 		BCDSevegments_displayNo(FOUR);
 		_delay_ms(50);
 		}
 		if(key == 5)
 		{
 			_delay_ms(50);
+			BCDSevegments_enable(ONE);
 			BCDSevegments_enable(TWO);
-			BCDSevegments_disable(ONE);
-			BCDSevegments_disable(THREE);
-			BCDSevegments_disable(FOUR);
+			BCDSevegments_enable(THREE);
+			BCDSevegments_enable(FOUR);
 			BCDSevegments_displayNo(FIVE);
 			_delay_ms(50);
 		}
 			if(key == 6)
 			{
 				_delay_ms(50);
+				BCDSevegments_enable(ONE);
 				BCDSevegments_enable(TWO);
-				BCDSevegments_disable(ONE);
-				BCDSevegments_disable(THREE);
-				BCDSevegments_disable(FOUR);
+				BCDSevegments_enable(THREE);
+				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(SIX);
 				_delay_ms(50);
 			}
 			if(key == 7)
 			{
 				_delay_ms(50);
+				BCDSevegments_enable(ONE);
 				BCDSevegments_enable(TWO);
-				BCDSevegments_disable(ONE);
-				BCDSevegments_disable(THREE);
-				BCDSevegments_disable(FOUR);
+				BCDSevegments_enable(THREE);
+				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(SEVEN);
 				_delay_ms(50);
 			}
 			if(key == 8)
 			{
 				_delay_ms(50);
+				BCDSevegments_enable(ONE);
 				BCDSevegments_enable(TWO);
-				BCDSevegments_disable(ONE);
-				BCDSevegments_disable(THREE);
-				BCDSevegments_disable(FOUR);
+				BCDSevegments_enable(THREE);
+				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(EIGHT);
 				_delay_ms(50);
 			}
 			if(key == 9)
 			{
 				_delay_ms(50);
+				BCDSevegments_enable(ONE);
 				BCDSevegments_enable(TWO);
-				BCDSevegments_disable(ONE);
-				BCDSevegments_disable(THREE);
-				BCDSevegments_disable(FOUR);
+				BCDSevegments_enable(THREE);
+				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(NINE);
 				_delay_ms(50);
 			}
