@@ -131,17 +131,14 @@ void LCD_displayChar(uint8 ch)
 void LCD_displayString(uint8 str[])
 {
 	/*Variable For for Loop*/
-	uint8 i;
+	uint8 i=0;
 	
-	/*Getting Arr Size*/
-	uint8 str_len = ((sizeof(str))/(sizeof(str[0])));
-	
-	/*Loop For All Chars*/
-	for(i=0;i<str_len;i++)
+	while(str[i]!= 0)
 	{
 		_delay_ms(5);
 		LCD_displayChar(str[i]);
 		_delay_ms(5);
+		i++;
 	}
 }
 

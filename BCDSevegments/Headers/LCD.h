@@ -14,8 +14,7 @@
 
 void LCD_init();
 void LCD_sendCommand(uint8 Cmd);
-void LCD_displayChar(uint8 ch);
-void LCD_displayString();
+void LCD_displayString(uint8 str[]);
 void LCD_displayStringRowColumn();
 void LCD_clear();
 void LCD_gotoRowColumn();
