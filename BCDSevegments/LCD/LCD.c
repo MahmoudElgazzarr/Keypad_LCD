@@ -13,7 +13,7 @@
 
 void LCD_init()
 {
-	#ifdef bit_Mode4
+	#ifdef Bit_Mode4
 	
 	/*Data PINS*/
 	DIO_SetPinDirection(LCD_D4 , OUTPUT);
@@ -29,16 +29,19 @@ void LCD_init()
 	LCD_sendCommand(0x32);
 	/*Send Command To Set 4-Bit Mode*/
 	LCD_sendCommand(Function_Set_4Bit);
-	LCD_sendCommand(0x0E);
-	LCD_sendCommand(0x01);
+	/*Turn On Cyrser */
+	LCD_sendCommand(Cyrser_On);
+	/*Clear Display*/
+	LCD_sendCommand(Clear_Command);
+	/**/
 	LCD_sendCommand(0x06);
 	
 	
 	#endif
+	/*
+	#if Bit_Mode8
 	
-	#ifdef Bit_Mode8
-	
-	/*Data Pins*/
+	/ *Data Pins* /
 	DIO_SetPinDirection(LCD_D0 , OUTPUT);
 	DIO_SetPinDirection(LCD_D1 , OUTPUT);
 	DIO_SetPinDirection(LCD_D2 , OUTPUT);
@@ -49,42 +52,85 @@ void LCD_init()
 	DIO_SetPinDirection(LCD_D6 , OUTPUT);
 	DIO_SetPinDirection(LCD_D7 , OUTPUT);
 	
-	/*Command Pins*/
+	/ *Command Pins* /
 	DIO_SetPinDirection(LCD_RS , OUTPUT);
 	DIO_SetPinDirection(LCD_RW , OUTPUT);
-	DIO_SetPinDirection(LCD_ENABLE , OUTPUT);
+	//DIO_SetPinDirection(LCD_ENABLE , OUTPUT);
 	
 	
 	#endif
-	
+	*/
 	
 }
 void LCD_sendCommand(uint8 Cmd)
 {
-	/*RS == 0 For Command Register
-	R/W == 0 For Writing */
+	/*RS == 0 For Command Register*/
 	DIO_WritePin(LCD_RS,LOW);
+	/*R/W == 0 For Writing */
 	DIO_WritePin(LCD_RW , LOW);
 	
-	/*LCD Enable Pin High For Latching*/
-	DIO_WritePin(LCD_ENABLE,HIGH);
+	/*LCD Enable Pin LOW For Latching*/
+	DIO_WritePin(LCD_ENABLE,LOW);
 	
 	/* Send Command Sequance */
-	LCD_PORT |=( Cmd & Mask_Last_4Bits ); 
+	LCD_PORT = ( LCD_PORT & Mask_First_4Bits ) | ( Cmd & Mask_Last_4Bits );
+	 
+	/*Latching Sequance*/
+	DIO_WritePin(LCD_ENABLE,HIGH);
+	_delay_ms(2);
 	/*LOW For Enable to Latch*/
 	DIO_WritePin(LCD_ENABLE,LOW);
 	
-	_delay_ms(2);
-	/*LCD Enable Pin High For Latching*/
-	DIO_WritePin(LCD_ENABLE,HIGH);
+	
+	/*LCD Enable Pin LOW For Latching*/
+	DIO_WritePin(LCD_ENABLE,LOW);
 	/*Send Command*/
-	LCD_PORT |= ( Number_Four << ( Cmd & Mask_First_4Bits ) ); 
+	LCD_PORT = ( LCD_PORT & Mask_First_4Bits ) | ( Cmd << Number_Four ); 
+	
+	/*Latching Sequance*/
+	DIO_WritePin(LCD_ENABLE,HIGH);
+	_delay_ms(2);
 	/*LOW For Enable to Latch*/
 	DIO_WritePin(LCD_ENABLE,LOW);
+	_delay_ms(2);
 }
 
-void LCD_displayChar()
+void LCD_displayChar(uint8 ch)
 {
+	/*RS == 1 For Data Register*/
+	DIO_WritePin(LCD_RS,HIGH);
+	/*R/W == 0 For Writing */
+	DIO_WritePin(LCD_RW , LOW);
+	
+	/*Clear Display*/
+	LCD_sendCommand(Clear_Command);
+	
+	/*LCD Enable Pin LOW For Latching*/
+	DIO_WritePin(LCD_ENABLE,LOW);
+	
+	/* Send Command Sequance */
+	LCD_PORT = ( LCD_PORT & Mask_First_4Bits ) | ( ch & Mask_Last_4Bits );
+	
+	/*Latching Sequance*/
+	DIO_WritePin(LCD_ENABLE,HIGH);
+	_delay_ms(2);
+	/*LOW For Enable to Latch*/
+	DIO_WritePin(LCD_ENABLE,LOW);
+	
+	
+	/*LCD Enable Pin LOW For Latching*/
+	DIO_WritePin(LCD_ENABLE,LOW);
+	/*Send Command*/
+	LCD_PORT = ( LCD_PORT & Mask_First_4Bits ) | ( ch << Number_Four );
+	
+	/*Latching Sequance*/
+	DIO_WritePin(LCD_ENABLE,HIGH);
+	_delay_ms(2);
+	/*LOW For Enable to Latch*/
+	DIO_WritePin(LCD_ENABLE,LOW);
+	
+	
+	_delay_us(100);
 	
 }
 void LCD_displayString()
@@ -98,7 +144,7 @@ void LCD_displayStringRowColumn()
 }
 void LCD_clear()
 {
-	
+	LCD_sendCommand(Clear_Command);
 }
 
 void LCD_gotoRowColumn()

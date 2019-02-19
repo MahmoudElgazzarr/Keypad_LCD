@@ -46,6 +46,7 @@
 
 #define Function_Set_4Bit 0x28
 #define Clear_Command 0x01
+#define Cyrser_On 0x0E
 
 #endif
 

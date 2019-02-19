@@ -20,10 +20,13 @@ int main(void)
 	BCDSevegments_Init();
 	Keypad_init();
 	LCD_init();
-	_delay_ms(5);
+
 	
     while (1) 
     {
+		_delay_ms(5);
+		LCD_displayChar('A');
+		_delay_ms(5);
 		uint8 key = Keypad_getPressedKey();
 		if (key == 1)
 		{
@@ -32,7 +35,7 @@ int main(void)
 			BCDSevegments_enable(TWO);
 			BCDSevegments_enable(THREE);
 			BCDSevegments_enable(FOUR);
-			//display one
+			/*display one*/
 			BCDSevegments_displayNo(ONE);
 			_delay_ms(50);
 		}
