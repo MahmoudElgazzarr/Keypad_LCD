@@ -125,19 +125,23 @@ void LCD_displayChar(uint8 ch)
 	_delay_ms(2);
 	/*LOW For Enable to Latch*/
 	DIO_WritePin(LCD_ENABLE,LOW);
-	
-	
 	_delay_us(100);
 	
 }
 void LCD_displayString(uint8 str[])
 {
+	/*Variable For for Loop*/
 	uint8 i;
+	
+	/*Getting Arr Size*/
 	uint8 str_len = ((sizeof(str))/(sizeof(str[0])));
-	for(i=0;i<8;i++)
+	
+	/*Loop For All Chars*/
+	for(i=0;i<str_len;i++)
 	{
+		_delay_ms(5);
 		LCD_displayChar(str[i]);
-		_delay_ms(2);
+		_delay_ms(5);
 	}
 }
 

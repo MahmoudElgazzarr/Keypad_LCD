@@ -20,13 +20,12 @@ int main(void)
 	BCDSevegments_Init();
 	Keypad_init();
 	LCD_init();
-
-	
+	uint8 strr[8] = {'E' , 'L' , 'G' , 'A' , 'Z' , 'Z' , 'A','R'};
+		LCD_displayString(strr);
+		
     while (1) 
     {
-		_delay_ms(5);
-		LCD_displayChar('A');
-		_delay_ms(5);
+	
 		uint8 key = Keypad_getPressedKey();
 		if (key == 1)
 		{
