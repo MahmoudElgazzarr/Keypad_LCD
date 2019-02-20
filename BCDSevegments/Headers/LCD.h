@@ -13,11 +13,14 @@
 
 
 void LCD_init();
+void LCD_displayChar(uint8 ch);
 void LCD_sendCommand(uint8 Cmd);
 void LCD_displayString(uint8 str[]);
-void LCD_displayStringRowColumn();
+
+void LCD_displayStringRowColumn(uint8 str[],uint8 Row,uint8 Column);
+
 void LCD_clear();
-void LCD_gotoRowColumn();
+void LCD_gotoRowColumn(uint8 Row,uint8 Column);
 
 
 #define Mask_Last_4Bits 0xF0

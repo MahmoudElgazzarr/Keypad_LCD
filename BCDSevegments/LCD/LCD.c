@@ -2,7 +2,7 @@
  * LCD.c
  *
  * Created: 2/19/2019 11:49:36 AM
- *  Author: AVE-LAP-040
+ *  Author: Mahmoud Elgazzar
  */ 
 #include "LCD.h"
 #include "LCD_Cfg.h"
@@ -11,9 +11,11 @@
 #include "DIO_Registers_Definitions.h"
 #include "avr/delay.h"
 
+
+/*Inalization For The LCD*/
 void LCD_init()
 {
-	//#ifdef Bit_Mode4
+	#ifdef Bit_Mode4
 	
 	/*Data PINS*/
 	DIO_SetPinDirection(LCD_D4 , OUTPUT);
@@ -37,9 +39,9 @@ void LCD_init()
 	LCD_sendCommand(0x06);
 	
 	
-	//#endif
+	#endif
 	/*
-	#if Bit_Mode8
+	#ifdef Bit_Mode8
 	
 	/ *Data Pins* /
 	DIO_SetPinDirection(LCD_D0 , OUTPUT);
@@ -62,6 +64,9 @@ void LCD_init()
 	*/
 	
 }
+
+/*Function the sends Commands the The LCD Like Clear and So on*/
+
 void LCD_sendCommand(uint8 Cmd)
 {
 	/*RS == 0 For Command Register*/
@@ -95,6 +100,7 @@ void LCD_sendCommand(uint8 Cmd)
 	_delay_ms(2);
 }
 
+/*Function To Display Char on the LCD*/
 void LCD_displayChar(uint8 ch)
 {
 	/*RS == 1 For Data Register*/
@@ -128,6 +134,7 @@ void LCD_displayChar(uint8 ch)
 	_delay_us(100);
 	
 }
+/*Function that Takes array of char*/
 void LCD_displayString(uint8 str[])
 {
 	/*Variable For for Loop*/
@@ -142,16 +149,22 @@ void LCD_displayString(uint8 str[])
 	}
 }
 
-void LCD_displayStringRowColumn()
+/*Display String Row and Column*/
+void LCD_displayStringRowColumn(uint8 str[],uint8 Row,uint8 Column)
 {
-	
+	LCD_gotoRowColumn(Row,Column);
+	LCD_displayString(str);
 }
+/* Function to clear LCD */
 void LCD_clear()
 {
 	LCD_sendCommand(Clear_Command);
 }
-
-void LCD_gotoRowColumn()
+/*
+* ROW : Enter #define from .h file LCD_CMD_1ST_LINE
+* Column : Enter Number from 0 to 15
+*/
+void LCD_gotoRowColumn(uint8 Row,uint8 Column)
 {
-	
+	LCD_sendCommand(Row+Column);
 }

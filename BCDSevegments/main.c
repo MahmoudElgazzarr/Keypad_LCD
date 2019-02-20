@@ -20,12 +20,9 @@ int main(void)
 	BCDSevegments_Init();
 	Keypad_init();
 	LCD_init();
-	uint8 strr[] = {'E' , 'L' , 'G' , 'A' , 'Z' , 'Z' , 'A','R' , '\0'};
-		LCD_displayString(strr);
-		
+	_delay_ms(5);
     while (1) 
     {
-	
 		uint8 key = Keypad_getPressedKey();
 		if (key == 1)
 		{
@@ -37,7 +34,6 @@ int main(void)
 			/*display one*/
 			BCDSevegments_displayNo(ONE);
 			_delay_ms(50);
-			LCD_displayString(strr[key]);
 		}
 		if(key == 2)
 		{
@@ -48,7 +44,6 @@ int main(void)
 		BCDSevegments_enable(FOUR);
 		BCDSevegments_displayNo(TWO);
 		_delay_ms(50);
-		LCD_displayString(strr[key]);
 		}
 		if(key == 3)
 		{
@@ -59,7 +54,6 @@ int main(void)
 			BCDSevegments_enable(FOUR);
 			BCDSevegments_displayNo(THREE);
 			_delay_ms(50);
-			LCD_displayString(strr[key]);
 		}
 		if(key == 4)
 		{
@@ -70,7 +64,6 @@ int main(void)
 		BCDSevegments_enable(FOUR);
 		BCDSevegments_displayNo(FOUR);
 		_delay_ms(50);
-		LCD_displayString(strr[key]);
 		}
 		if(key == 5)
 		{
@@ -81,7 +74,6 @@ int main(void)
 			BCDSevegments_enable(FOUR);
 			BCDSevegments_displayNo(FIVE);
 			_delay_ms(50);
-			LCD_displayString(strr[key]);
 		}
 			if(key == 6)
 			{
@@ -92,7 +84,6 @@ int main(void)
 				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(SIX);
 				_delay_ms(50);
-				LCD_displayString(strr[key]);
 			}
 			if(key == 7)
 			{
@@ -103,7 +94,6 @@ int main(void)
 				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(SEVEN);
 				_delay_ms(50);
-				LCD_displayString(strr[key]);
 			}
 			if(key == 8)
 			{
@@ -114,7 +104,6 @@ int main(void)
 				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(EIGHT);
 				_delay_ms(50);
-				LCD_displayString(strr[key]);
 			}
 			if(key == 9)
 			{
@@ -125,10 +114,8 @@ int main(void)
 				BCDSevegments_enable(FOUR);
 				BCDSevegments_displayNo(NINE);
 				_delay_ms(50);
-				LCD_displayString(strr[key]);
 			}
 		_delay_ms(1000);
     }
-	
 }
 
