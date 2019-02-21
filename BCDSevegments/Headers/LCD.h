@@ -13,8 +13,10 @@
 
 
 void LCD_init();
+
 void LCD_displayChar(uint8 ch);
 void LCD_sendCommand(uint8 Cmd);
+/* if you are  sending array of chars you must put null terminator at the end */
 void LCD_displayString(uint8 str[]);
 
 void LCD_displayStringRowColumn(uint8 str[],uint8 Row,uint8 Column);

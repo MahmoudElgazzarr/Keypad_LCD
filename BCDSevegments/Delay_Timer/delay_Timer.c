@@ -7,33 +7,31 @@
 
 #include "Types.h"
 #include "delay_Timer.h"
+#include "avr/interrupt.h"
 
+/*Global Setting To Set Timer For 1 MSec on 16 MHZ Crystal*/
+volatile uint16 counter = 0 ;
+volatile uint8 Sec;
 
 void timer_init(void)
 {
-		/*Enabling CTC ( Capture Compare ) Mode*/
-		TCCR0 &= ~(1<<WGM00);
-		TCCR0 |= (1<<WGM01);
-		/*Set Bit on Capture Compare*/
-		TCCR0 |= (1<<COM00);
-		TCCR0 |= (1<<COM01);
-		/*Enabling Prescaler 64 */
-		TCCR0 |= (1<<CS00);
-		TCCR0 |= (1<<CS01);
-		TCCR0 &=~ (1<<CS02);
-		/*Setting Output Compare Register to 64*/
-		OCR0 = 249;
+	SREG |= (1<<IBIT);
+	TIMSK |=(1<<OCIE0);
+	TCNT0 = 0 ;
+	OCR0 = 249 ;
+	/*Prescaler 64*/
+	TCCR0 |= (1<<CS00)|(1<<CS01)|(1<<WGM01);
 }
-void timer_delay(uint32 n)
+ISR(TIMER0_COMP_vect)
 {
-	uint32 i;
-	
-	for(i=0;i<n;i++)
+	counter++ ;
+	if (counter == 1000)
 	{
-		/*Wait 1 m sec*/
-		while(( (TIFR) & (1<<OCF0)) == 0);
-		/*Clear OCF0 Flag*/
-		TIFR |= (1<<OCF0);
+		Sec++ ;
+		counter = 0 ;
 	}
-	
+	if(Sec == 253)
+	{
+		Sec = 0;
+	}
 }

@@ -13,6 +13,7 @@
 
 
 /*Inalization For The LCD*/
+
 void LCD_init()
 {
 	#ifdef Bit_Mode4
@@ -27,20 +28,20 @@ void LCD_init()
 	DIO_SetPinDirection(LCD_RW , OUTPUT);
 	DIO_SetPinDirection(LCD_ENABLE , OUTPUT);
 	
-	LCD_sendCommand(0x33);
-	LCD_sendCommand(0x32);
+	LCD_sendCommand(LCD_CMD_INIT1_4_BIT);
+	LCD_sendCommand(LCD_CMD_INIT2_4_BIT);
 	/*Send Command To Set 4-Bit Mode*/
 	LCD_sendCommand(Function_Set_4Bit);
 	/*Turn On Cyrser */
 	LCD_sendCommand(Cyrser_On);
 	/*Clear Display*/
 	LCD_sendCommand(Clear_Command);
-	/**/
-	LCD_sendCommand(0x06);
+	/*Increment Curser*/
+	LCD_sendCommand(LCD_CMD_INCREMNT_CURSER);
 	
 	
 	#endif
-	/*
+	
 	#ifdef Bit_Mode8
 	
 	/ *Data Pins* /
@@ -61,7 +62,6 @@ void LCD_init()
 	
 	
 	#endif
-	*/
 	
 }
 

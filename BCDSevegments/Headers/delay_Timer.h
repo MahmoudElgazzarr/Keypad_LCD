@@ -9,6 +9,9 @@
 #ifndef DELAY_TIMER_H_
 #define DELAY_TIMER_H_
 
+
+extern volatile uint8 Sec;
+
 void timer_init(void);
 void timer_delay(uint32 n);
 
@@ -21,7 +24,8 @@ void timer_delay(uint32 n);
 #define SREG (*(volatile uint8*)0x5F)
 #define TCCR0 (*(volatile uint8*)0x53)
 
-#define IBit 7
+#define IBIT 7
+#define TOIE0 0
 
 #define OCF0 1
 
@@ -34,6 +38,7 @@ void timer_delay(uint32 n);
 #define COM01 5
 #define WGM00 6
 #define FOC0 7
+#define OCIE0 1
 
 
 #endif /* DELAY_TIMER_H_ */

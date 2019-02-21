@@ -132,3 +132,41 @@ uint8 DIO_ReadPin(uint8 PinNum)
 		}
 		return return_value;
 }
+uint8 DIO_ReadPort(uint8 PortNumber)
+{
+	switch(PortNumber)
+	{
+		case 1:
+		PortNumber = PORTA;
+		break;
+		case 2:
+		PortNumber = PORTB;
+		break;
+		case 3:
+		PortNumber = PORTC;
+		break;
+		case 4:
+		PortNumber = PORTD;
+		break;
+	}
+	return PortNumber;
+}
+uint8 DIO_WritePort(uint8 PortNumber)
+{
+	switch(PortNumber)
+	{
+	case 1:
+	PortNumber = PORTA;
+	break;
+	case 2:
+	PortNumber = PORTB;
+	break;
+	case 3:
+	PortNumber = PORTC;
+	break;
+	case 4:
+	PortNumber = PORTD;
+	break;
+	}
+	return PortNumber;
+}

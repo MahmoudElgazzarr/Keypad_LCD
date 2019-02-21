@@ -1,121 +1,58 @@
 /*
- * BCDSevegments.c
+ * main.c
  *
- * Created: 2/18/2019 12:49:15 PM
- * Author : AVE-LAP-040
+ * Created: 2/20/2019 6:29:09 PM
+ *  Author: AVE-LAP-016
  */ 
-#define  F_CPU 1000000UL
-//#include <avr/io.h>
-#include "Types.h"
+/*
+ * Avelabs_Project.c
+ *
+ * Created: 2/13/2019 10:53:23 AM
+ * Author : AVE-LAP-016
+ */ 
+
+#include "types.h"
+#include "BitwiseOperation.h"
+#include "DIO_Registers.h"
+#include "DIO_Registers_Definitions.h"
 #include "delay_Timer.h"
-#include "BCDSevegments.h"
-#include "Keypad.h"
-#include "avr/delay.h"
-#include "LCD.h"
-#include "LCD_Cfg.h"
+#define GO 0
+#define STOP 1
+#define GET_READY 2
+
 
 int main(void)
 {
-    /* Replace with your application code */
-	BCDSevegments_Init();
-	Keypad_init();
-	LCD_init();
-	_delay_ms(5);
-    while (1) 
-    {
-		uint8 key = Keypad_getPressedKey();
-		if (key == 1)
+	DIO_SetPinDirection(PIN13,OUTPUT);
+	DIO_SetPinDirection(PIN14,OUTPUT);
+	DIO_SetPinDirection(PIN15,OUTPUT);
+	/*Set Pins To LOW*/
+	DIO_WritePin(PIN13,LOW);
+	DIO_WritePin(PIN14,LOW);
+	DIO_WritePin(PIN15,LOW);
+	timer_init();
+	while (1)
+	{
+		switch (Sec%3)
 		{
-			_delay_ms(50);
-			BCDSevegments_enable(ONE);
-			BCDSevegments_enable(TWO);
-			BCDSevegments_enable(THREE);
-			BCDSevegments_enable(FOUR);
-			/*display one*/
-			BCDSevegments_displayNo(ONE);
-			_delay_ms(50);
+			case GO :
+			   DIO_WritePin(PIN13,HIGH);
+			   DIO_WritePin(PIN15,LOW);
+			   DIO_WritePin(PIN14,LOW);
+			   break;
+			case STOP :
+			   DIO_WritePin(PIN13,LOW);
+			   DIO_WritePin(PIN15,HIGH);
+			   DIO_WritePin(PIN14,LOW);
+			   break;
+			case GET_READY :
+			   DIO_WritePin(PIN13,LOW);
+			   DIO_WritePin(PIN15,LOW);
+			   DIO_WritePin(PIN14,HIGH);
+			   break;
+			
 		}
-		if(key == 2)
-		{
-		_delay_ms(50);
-		BCDSevegments_enable(ONE);
-		BCDSevegments_enable(TWO);
-		BCDSevegments_enable(THREE);
-		BCDSevegments_enable(FOUR);
-		BCDSevegments_displayNo(TWO);
-		_delay_ms(50);
-		}
-		if(key == 3)
-		{
-			_delay_ms(50);
-			BCDSevegments_enable(ONE);
-			BCDSevegments_enable(TWO);
-			BCDSevegments_enable(THREE);
-			BCDSevegments_enable(FOUR);
-			BCDSevegments_displayNo(THREE);
-			_delay_ms(50);
-		}
-		if(key == 4)
-		{
-		_delay_ms(50);
-		BCDSevegments_enable(ONE);
-		BCDSevegments_enable(TWO);
-		BCDSevegments_enable(THREE);
-		BCDSevegments_enable(FOUR);
-		BCDSevegments_displayNo(FOUR);
-		_delay_ms(50);
-		}
-		if(key == 5)
-		{
-			_delay_ms(50);
-			BCDSevegments_enable(ONE);
-			BCDSevegments_enable(TWO);
-			BCDSevegments_enable(THREE);
-			BCDSevegments_enable(FOUR);
-			BCDSevegments_displayNo(FIVE);
-			_delay_ms(50);
-		}
-			if(key == 6)
-			{
-				_delay_ms(50);
-				BCDSevegments_enable(ONE);
-				BCDSevegments_enable(TWO);
-				BCDSevegments_enable(THREE);
-				BCDSevegments_enable(FOUR);
-				BCDSevegments_displayNo(SIX);
-				_delay_ms(50);
-			}
-			if(key == 7)
-			{
-				_delay_ms(50);
-				BCDSevegments_enable(ONE);
-				BCDSevegments_enable(TWO);
-				BCDSevegments_enable(THREE);
-				BCDSevegments_enable(FOUR);
-				BCDSevegments_displayNo(SEVEN);
-				_delay_ms(50);
-			}
-			if(key == 8)
-			{
-				_delay_ms(50);
-				BCDSevegments_enable(ONE);
-				BCDSevegments_enable(TWO);
-				BCDSevegments_enable(THREE);
-				BCDSevegments_enable(FOUR);
-				BCDSevegments_displayNo(EIGHT);
-				_delay_ms(50);
-			}
-			if(key == 9)
-			{
-				_delay_ms(50);
-				BCDSevegments_enable(ONE);
-				BCDSevegments_enable(TWO);
-				BCDSevegments_enable(THREE);
-				BCDSevegments_enable(FOUR);
-				BCDSevegments_displayNo(NINE);
-				_delay_ms(50);
-			}
-		_delay_ms(1000);
-    }
+		
+	}
+	return 0 ;
 }
-
